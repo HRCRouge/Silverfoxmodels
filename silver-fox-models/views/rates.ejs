@@ -1,0 +1,42 @@
+<%- include('partials/head', { title: 'Rate Card' }) %>
+<%- include('partials/header', { page }) %>
+
+<section class="section" style="padding-top:64px;">
+  <div class="wrap">
+    <p class="eyebrow">Official Rate Card &middot; <%= new Date().getFullYear() %></p>
+    <h2>Pricing</h2>
+    <p class="rates-note" style="margin-top:16px;"><%= notes %></p>
+
+    <div class="rate-table-wrap">
+      <table class="rate-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Description</th>
+            <th>Duration</th>
+            <th>Rate</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% rateCard.forEach(r => { %>
+            <tr>
+              <td><strong><%= r.serviceType %></strong></td>
+              <td><%= r.description %></td>
+              <td><%= r.duration %></td>
+              <td class="rate"><%= r.rate %></td>
+              <td><%= r.notes %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="hero-actions" style="margin-top:36px;">
+      <a href="/contact" class="btn btn-gold">Book a shoot</a>
+      <a href="/models" class="btn btn-outline">Browse models</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

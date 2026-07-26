@@ -1,0 +1,44 @@
+<%- include('partials/head', { title: 'About' }) %>
+<%- include('partials/header', { page }) %>
+
+<section class="section" style="padding-top:64px;">
+  <div class="wrap">
+    <p class="eyebrow">About the agency</p>
+    <h2 style="max-width: 18ch;">Where talent meets opportunity.</h2>
+    <p style="margin-top:24px; color:var(--silver); max-width:66ch; font-size:1.05rem;"><%= site.aboutText %></p>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <p class="eyebrow">How it works</p>
+    <h2>What booking with us looks like</h2>
+    <div class="how-grid">
+      <% site.howItWorks.forEach((item, i) => { %>
+        <div class="how-item">
+          <span class="how-index">0<%= i + 1 %></span>
+          <h3><%= item.title %></h3>
+          <p><%= item.text %></p>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section panel-bone">
+  <div class="wrap">
+    <p class="eyebrow">Peace of mind</p>
+    <h2 style="max-width:24ch;">See it for yourself before you commit.</h2>
+    <p class="silver" style="margin-top:16px; max-width:64ch;">
+      You're welcome to browse our existing model portfolio or ask to speak with one of our current models first.
+      We want you to feel confident this is legitimate before moving forward — no joining fees, no hidden charges,
+      and a written agreement covering the project, payment, and usage rights before any shoot.
+    </p>
+    <div class="hero-actions" style="margin-top:28px;">
+      <a href="/models" class="btn btn-gold">View our portfolio</a>
+      <a href="/contact" class="btn btn-outline">Ask us a question</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

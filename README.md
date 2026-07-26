@@ -1,2 +1,0 @@
-# Silverfoxmodels
-Modeling agency website

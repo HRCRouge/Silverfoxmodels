@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin dashboard — Silver Fox Models</title>
+  <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body class="admin-body">
+  <div class="admin-shell">
+    <div class="admin-header">
+      <h1>Silver Fox Models — Admin</h1>
+      <div class="admin-actions">
+        <a href="/" class="btn btn-sm btn-outline">View site</a>
+        <form method="POST" action="/admin/logout"><button class="btn btn-sm btn-outline" type="submit">Log out</button></form>
+      </div>
+    </div>
+
+    <% if (notice) { %><div class="form-notice"><%= notice %></div><% } %>
+
+    <!-- Models -->
+    <div class="admin-card">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <h2>Models (<%= models.length %>)</h2>
+          <p class="sub">Add, edit, or remove models shown on the public site.</p>
+        </div>
+        <a href="/admin/models/new" class="btn btn-sm btn-gold">+ Add model</a>
+      </div>
+      <table class="admin-table">
+        <thead><tr><th>Name</th><th>Gender</th><th>Location</th><th>Status</th><th>Photos</th><th></th></tr></thead>
+        <tbody>
+          <% models.forEach(m => { %>
+            <tr>
+              <td><%= m.name %></td>
+              <td><%= m.gender %></td>
+              <td><%= m.location %></td>
+              <td><%= m.active ? 'Active' : 'Hidden' %></td>
+              <td><%= (m.photos || []).length %></td>
+              <td class="admin-actions">
+                <a href="/admin/models/<%= m.id %>/edit" class="btn btn-sm btn-outline">Edit</a>
+                <form method="POST" action="/admin/models/<%= m.id %>/delete" onsubmit="return confirm('Remove ' + '<%= m.name %>' + '? This cannot be undone.');">
+                  <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Rate card -->
+    <div class="admin-card">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <h2>Rate card</h2>
+          <p class="sub"><%= rateCard.length %> services listed.</p>
+        </div>
+        <a href="/admin/rates" class="btn btn-sm btn-gold">Edit rate card</a>
+      </div>
+    </div>
+
+    <!-- Contact & site info -->
+    <div class="admin-card">
+      <h2>Contact &amp; site info</h2>
+      <p class="sub">Shown in the footer, contact page, and homepage.</p>
+      <form method="POST" action="/admin/contact">
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input type="text" id="phone" name="phone" value="<%= contact.phone %>" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" value="<%= contact.email %>" required>
+        </div>
+        <div class="field">
+          <label for="address">Address</label>
+          <input type="text" id="address" name="address" value="<%= contact.address %>" required>
+        </div>
+        <div class="field">
+          <label for="tagline">Homepage tagline</label>
+          <input type="text" id="tagline" name="tagline" value="<%= site.tagline %>">
+        </div>
+        <div class="field">
+          <label for="subTagline">Sub-tagline</label>
+          <input type="text" id="subTagline" name="subTagline" value="<%= site.subTagline %>">
+        </div>
+        <div class="field">
+          <label for="heroText">Homepage intro text</label>
+          <textarea id="heroText" name="heroText"><%= site.heroText %></textarea>
+        </div>
+        <div class="field">
+          <label for="aboutText">About page text</label>
+          <textarea id="aboutText" name="aboutText"><%= site.aboutText %></textarea>
+        </div>
+        <button class="btn btn-gold" type="submit">Save site info</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

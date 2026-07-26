@@ -1,0 +1,59 @@
+<%- include('partials/head', { title: model.name }) %>
+<%- include('partials/header', { page }) %>
+
+<section class="section" style="padding-top:64px;">
+  <div class="wrap">
+    <a href="/models" class="eyebrow">&larr; Back to all models</a>
+    <div class="model-detail" style="margin-top:28px;">
+      <div class="model-gallery">
+        <div class="main-photo">
+          <% if (model.photos && model.photos[0]) { %>
+            <img src="<%= model.photos[0] %>" alt="<%= model.name %>" id="main-photo-img">
+          <% } else { %>
+            <span class="placeholder" style="font-size:4rem;"><%= model.name.charAt(0) %></span>
+          <% } %>
+        </div>
+        <% if (model.photos && model.photos.length > 1) { %>
+          <div class="thumb-row">
+            <% model.photos.forEach(p => { %>
+              <img src="<%= p %>" alt="<%= model.name %>" onclick="document.getElementById('main-photo-img').src=this.src" style="cursor:pointer;">
+            <% }) %>
+          </div>
+        <% } %>
+      </div>
+
+      <div class="model-copy">
+        <p class="eyebrow"><%= model.gender %> &middot; Silver Fox Models</p>
+        <h1><%= model.name %></h1>
+
+        <div class="spec-grid">
+          <div><div class="spec-label">Age</div><div class="spec-value"><%= model.age %> years old</div></div>
+          <div><div class="spec-label">Location</div><div class="spec-value"><%= model.location %></div></div>
+          <div><div class="spec-label">Availability</div><div class="spec-value"><%= model.availability %></div></div>
+          <div><div class="spec-label">Represented by</div><div class="spec-value">Silver Fox Models</div></div>
+          <% if (model.height) { %><div><div class="spec-label">Height</div><div class="spec-value"><%= model.height %></div></div><% } %>
+          <% if (model.shoes) { %><div><div class="spec-label">Shoes</div><div class="spec-value"><%= model.shoes %></div></div><% } %>
+          <% if (model.hair) { %><div><div class="spec-label">Hair</div><div class="spec-value"><%= model.hair %></div></div><% } %>
+          <% if (model.eyes) { %><div><div class="spec-label">Eyes</div><div class="spec-value"><%= model.eyes %></div></div><% } %>
+        </div>
+
+        <h3>About</h3>
+        <p style="margin-top:12px; color: var(--silver); max-width: 62ch;"><%= model.about %></p>
+
+        <% if (model.idealFor && model.idealFor.length) { %>
+          <h3 style="margin-top:32px;">Ideal for</h3>
+          <div class="ideal-tags">
+            <% model.idealFor.forEach(t => { %><span><%= t %></span><% }) %>
+          </div>
+        <% } %>
+
+        <div class="hero-actions" style="margin-top:36px;">
+          <a href="/contact" class="btn btn-gold">Book this model</a>
+          <a href="/rates" class="btn btn-outline">View rate card</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

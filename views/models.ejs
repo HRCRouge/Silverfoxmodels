@@ -1,0 +1,40 @@
+<%- include('partials/head', { title: 'Models' }) %>
+<%- include('partials/header', { page }) %>
+
+<section class="section" style="padding-top:64px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">The roster</p>
+        <h2>Our models</h2>
+        <p>Every model on this page is currently available for booking. Reach out and we'll handle the pitch and the paperwork.</p>
+      </div>
+    </div>
+
+    <% if (models.length === 0) { %>
+      <p style="color:var(--silver);">No models are listed yet — check back soon.</p>
+    <% } else { %>
+      <div class="model-grid">
+        <% models.forEach(m => { %>
+          <a href="/models/<%= m.id %>" class="model-card">
+            <div class="model-photo">
+              <% if (m.photos && m.photos[0]) { %>
+                <img src="<%= m.photos[0] %>" alt="<%= m.name %>">
+              <% } else { %>
+                <span class="placeholder"><%= m.name.charAt(0) %></span>
+              <% } %>
+              <span class="model-tag"><%= m.gender %></span>
+            </div>
+            <div class="model-info">
+              <h3><%= m.name %></h3>
+              <p class="meta"><%= m.location %> &middot; <%= m.availability %></p>
+              <span class="view-link">View profile &rarr;</span>
+            </div>
+          </a>
+        <% }) %>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

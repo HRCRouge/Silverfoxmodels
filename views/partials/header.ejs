@@ -1,0 +1,18 @@
+<header class="site-header">
+  <div class="wrap">
+    <a href="/" class="brand">
+      <img src="/public/images/logo.png" alt="Silver Fox Models logo">
+      <span class="brand-text">Silver Fox<small>MODELS</small></span>
+    </a>
+    <nav class="main-nav">
+      <a href="/" class="<%= page === 'home' ? 'active' : '' %>">Home</a>
+      <a href="/models" class="<%= page === 'models' ? 'active' : '' %>">Models</a>
+      <a href="/rates" class="<%= page === 'rates' ? 'active' : '' %>">Rates</a>
+      <a href="/about" class="<%= page === 'about' ? 'active' : '' %>">About</a>
+      <a href="/contact" class="<%= page === 'contact' ? 'active' : '' %>">Contact</a>
+      <% if (isAdmin) { %>
+        <a href="/admin" class="btn btn-sm btn-outline">Admin</a>
+      <% } %>
+    </nav>
+  </div>
+</header>

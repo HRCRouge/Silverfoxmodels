@@ -1,0 +1,40 @@
+<%- include('partials/head', { title: 'Contact' }) %>
+<%- include('partials/header', { page }) %>
+
+<section class="section" style="padding-top:64px;">
+  <div class="wrap">
+    <p class="eyebrow">Get in touch</p>
+    <h2>Book a model, or join our roster.</h2>
+    <p style="margin-top:16px; color:var(--silver); max-width:60ch;">
+      Whether you're a brand looking to book talent or a model interested in joining Silver Fox Models,
+      reach out directly — we typically reply within a day.
+    </p>
+
+    <div class="contact-grid" style="margin-top:48px;">
+      <div>
+        <div class="contact-item">
+          <div class="spec-label">Phone</div>
+          <a href="tel:<%= contact.phone.replace(/\s+/g,'') %>"><%= contact.phone %></a>
+        </div>
+        <div class="contact-item">
+          <div class="spec-label">Email</div>
+          <a href="mailto:<%= contact.email %>"><%= contact.email %></a>
+        </div>
+        <div class="contact-item">
+          <div class="spec-label">Location</div>
+          <span><%= contact.address %></span>
+        </div>
+      </div>
+      <div class="contact-item" style="border:none; padding:0;">
+        <h3>Prefer email?</h3>
+        <p style="margin-top:10px; color:var(--silver);">
+          Send us your name, brand or portfolio, and what you're looking for — a shoot, an event appearance, or representation as a model —
+          and we'll follow up with next steps and a written agreement before anything is booked.
+        </p>
+        <a href="mailto:<%= contact.email %>" class="btn btn-gold" style="margin-top:20px;">Email Silver Fox Models</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

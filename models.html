@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Models — Silver Fox Models</title>
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header" id="site-header"></header>
+
+  <section class="section" style="padding-top:64px;">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">The roster</p>
+          <h2>Our models</h2>
+          <p>Every model on this page is currently available for booking. Reach out and we'll handle the pitch and the paperwork.</p>
+        </div>
+      </div>
+      <div class="model-grid" id="all-models"></div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/render.js"></script>
+  <script>
+    renderHeader('models');
+    renderFooter();
+    renderModelGrid('all-models', SITE_DATA.models.filter(m => m.active));
+  </script>
+</body>
+</html>

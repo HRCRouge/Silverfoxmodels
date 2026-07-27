@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rate Card — Silver Fox Models</title>
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header" id="site-header"></header>
+
+  <section class="section" style="padding-top:64px;">
+    <div class="wrap">
+      <p class="eyebrow" id="rate-year-label"></p>
+      <h2>Pricing</h2>
+      <p class="rates-note" id="rate-notes" style="margin-top:16px;"></p>
+      <div class="rate-table-wrap" id="rate-table"></div>
+      <div class="hero-actions" style="margin-top:36px;">
+        <a href="contact.html" class="btn btn-gold">Book a shoot</a>
+        <a href="models.html" class="btn btn-outline">Browse models</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/render.js"></script>
+  <script>
+    renderHeader('rates');
+    renderFooter();
+    document.getElementById('rate-year-label').textContent = 'Official Rate Card · ' + new Date().getFullYear();
+    document.getElementById('rate-notes').textContent = SITE_DATA.rateCardNotes;
+    renderRateTable('rate-table');
+  </script>
+</body>
+</html>

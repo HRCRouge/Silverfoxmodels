@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silver Fox Models — Commercial Talent Agency</title>
+  <meta name="description" content="Silver Fox Models is a commercial talent agency in Nepal connecting fresh faces with paid brand opportunities.">
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header" id="site-header"></header>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Commercial Talent Agency &middot; Nepal</p>
+        <h1 id="hero-tagline"></h1>
+        <p class="lead" id="hero-text"></p>
+        <div class="hero-actions">
+          <a href="models.html" class="btn btn-gold">View our models</a>
+          <a href="rates.html" class="btn btn-outline">See the rate card</a>
+        </div>
+      </div>
+      <div class="hero-mark">
+        <img src="images/logo.png" alt="Silver Fox Models fox mark">
+      </div>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2>Booking, made straightforward.</h2>
+      <div class="how-grid" id="how-it-works"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">On our roster</p>
+          <h2>Featured models</h2>
+        </div>
+        <a href="models.html" class="btn btn-outline">View full roster</a>
+      </div>
+      <div class="model-grid" id="featured-models"></div>
+    </div>
+  </section>
+
+  <section class="section panel-bone">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Why work with us</p>
+          <h2>No upfront fees. No ambiguity.</h2>
+          <p class="silver">If a brand confirms a project, you get paid directly and we take a 25% commission from that confirmed booking — never upfront, never before you're paid. There are no joining fees or hidden charges. Before any shoot, you'll get a written agreement covering the project, payment, and usage rights.</p>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a href="contact.html" class="btn btn-gold">Get in touch</a>
+        <a href="models.html" class="btn btn-outline">Meet current models</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/render.js"></script>
+  <script>
+    renderHeader('home');
+    renderFooter();
+    document.getElementById('hero-tagline').textContent = SITE_DATA.site.tagline;
+    document.getElementById('hero-text').textContent = SITE_DATA.site.heroText;
+    renderHowItWorks('how-it-works');
+    renderModelGrid('featured-models', SITE_DATA.models.filter(m => m.active).slice(0, 4));
+  </script>
+</body>
+</html>

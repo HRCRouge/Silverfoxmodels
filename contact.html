@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Silver Fox Models</title>
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header" id="site-header"></header>
+
+  <section class="section" style="padding-top:64px;">
+    <div class="wrap">
+      <p class="eyebrow">Get in touch</p>
+      <h2>Book a model, or join our roster.</h2>
+      <p style="margin-top:16px; color:var(--silver); max-width:60ch;">
+        Whether you're a brand looking to book talent or a model interested in joining Silver Fox Models,
+        reach out directly — we typically reply within a day.
+      </p>
+
+      <div class="contact-grid" style="margin-top:48px;">
+        <div id="contact-blocks"></div>
+        <div class="contact-item" style="border:none; padding:0;">
+          <h3>Prefer email?</h3>
+          <p style="margin-top:10px; color:var(--silver);">
+            Send us your name, brand or portfolio, and what you're looking for — a shoot, an event appearance, or representation as a model —
+            and we'll follow up with next steps and a written agreement before anything is booked.
+          </p>
+          <a href="#" id="email-cta" class="btn btn-gold" style="margin-top:20px;">Email Silver Fox Models</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/render.js"></script>
+  <script>
+    renderHeader('contact');
+    renderFooter();
+    renderContactBlocks('contact-blocks');
+    document.getElementById('email-cta').href = 'mailto:' + SITE_DATA.contactInfo.email;
+  </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Editor — Silver Fox Models</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-body">
+  <div class="admin-shell">
+    <div class="admin-header">
+      <div>
+        <h1>Content editor</h1>
+        <p class="sub" style="margin:4px 0 0; font-size:0.85rem; color:#777;">
+          Edits happen only in this browser tab. Nothing is saved anywhere until you
+          download the updated file and replace it in your project.
+        </p>
+      </div>
+      <a href="index.html" class="btn btn-sm btn-outline">&larr; View site</a>
+    </div>
+
+    <div id="notice-area"></div>
+
+    <div class="admin-tabs">
+      <button class="admin-tab-btn active" data-tab="models">Models</button>
+      <button class="admin-tab-btn" data-tab="rates">Rate Card</button>
+      <button class="admin-tab-btn" data-tab="site">Contact &amp; Site Info</button>
+    </div>
+
+    <!-- ===================== MODELS TAB ===================== -->
+    <div class="admin-tab-panel active" id="tab-models">
+      <div class="admin-card">
+        <h2>Current models</h2>
+        <p class="sub">Edit or remove a model, or add a new one below.</p>
+        <table class="admin-table">
+          <thead><tr><th>Name</th><th>Gender</th><th>Location</th><th>Status</th><th>Photos</th><th></th></tr></thead>
+          <tbody id="models-table-body"></tbody>
+        </table>
+      </div>
+
+      <div class="admin-card">
+        <h2 id="model-form-title">Add a new model</h2>
+        <div class="field">
+          <label for="m-name">Full name</label>
+          <input type="text" id="m-name">
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div class="field">
+            <label for="m-gender">Gender</label>
+            <select id="m-gender">
+              <option>Female</option>
+              <option>Male</option>
+              <option>Non-binary</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="m-age">Age</label>
+            <input type="text" id="m-age" placeholder="e.g. 22">
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div class="field">
+            <label for="m-location">Location</label>
+            <input type="text" id="m-location" placeholder="e.g. Kathmandu">
+          </div>
+          <div class="field">
+            <label for="m-availability">Availability</label>
+            <input type="text" id="m-availability" placeholder="e.g. Flexible, Weekends">
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px;">
+          <div class="field"><label for="m-height">Height</label><input type="text" id="m-height" placeholder="5'6&quot;"></div>
+          <div class="field"><label for="m-shoes">Shoes</label><input type="text" id="m-shoes" placeholder="US 7"></div>
+          <div class="field"><label for="m-hair">Hair</label><input type="text" id="m-hair" placeholder="Black"></div>
+          <div class="field"><label for="m-eyes">Eyes</label><input type="text" id="m-eyes" placeholder="Brown"></div>
+        </div>
+        <div class="field">
+          <label for="m-about">About</label>
+          <textarea id="m-about" rows="4"></textarea>
+        </div>
+        <div class="field">
+          <label for="m-ideal">Ideal for (comma-separated)</label>
+          <input type="text" id="m-ideal" placeholder="Travel campaigns, Boutique brands">
+        </div>
+        <div class="field">
+          <label for="m-photos">Add photos (JPG, PNG, or WEBP)</label>
+          <input type="file" id="m-photos" accept="image/jpeg,image/png,image/webp" multiple>
+        </div>
+        <div class="photo-thumb-grid" id="m-photo-preview"></div>
+        <div class="field" style="flex-direction:row; align-items:center; gap:8px; margin-top:12px;">
+          <input type="checkbox" id="m-active" checked style="width:auto;">
+          <label for="m-active" style="margin:0;">Visible on the public site</label>
+        </div>
+        <div style="display:flex; gap:10px; margin-top:12px;">
+          <button class="btn btn-gold" id="m-save-btn">Add model</button>
+          <button class="btn btn-outline" id="m-cancel-btn" style="display:none;">Cancel edit</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== RATES TAB ===================== -->
+    <div class="admin-tab-panel" id="tab-rates">
+      <div class="admin-card">
+        <h2>Rate card</h2>
+        <p class="sub">Edit any field directly. Use "+ Add row" for a new service, or the &times; to remove one.</p>
+        <div style="display:grid; grid-template-columns:1.4fr 1.6fr 0.9fr 1fr 1.6fr auto; gap:8px; margin-bottom:10px; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.06em; color:#886;">
+          <span>Service</span><span>Description</span><span>Duration</span><span>Rate</span><span>Notes</span><span></span>
+        </div>
+        <div id="rate-rows"></div>
+        <button type="button" id="rate-add-row" class="btn btn-sm btn-outline" style="margin-top:8px;">+ Add row</button>
+
+        <div class="field" style="margin-top:24px;">
+          <label for="rate-notes">Rate card intro / notes</label>
+          <textarea id="rate-notes" rows="3"></textarea>
+        </div>
+        <button class="btn btn-gold" id="rate-save-btn">Save rate card</button>
+      </div>
+    </div>
+
+    <!-- ===================== SITE / CONTACT TAB ===================== -->
+    <div class="admin-tab-panel" id="tab-site">
+      <div class="admin-card">
+        <h2>Contact info</h2>
+        <div class="field"><label for="c-phone">Phone</label><input type="text" id="c-phone"></div>
+        <div class="field"><label for="c-email">Email</label><input type="email" id="c-email"></div>
+        <div class="field"><label for="c-address">Address</label><input type="text" id="c-address"></div>
+      </div>
+      <div class="admin-card">
+        <h2>Homepage &amp; about text</h2>
+        <div class="field"><label for="s-tagline">Homepage tagline</label><input type="text" id="s-tagline"></div>
+        <div class="field"><label for="s-subtagline">Sub-tagline</label><input type="text" id="s-subtagline"></div>
+        <div class="field"><label for="s-hero">Homepage intro text</label><textarea id="s-hero" rows="3"></textarea></div>
+        <div class="field"><label for="s-about">About page text</label><textarea id="s-about" rows="4"></textarea></div>
+        <button class="btn btn-gold" id="site-save-btn">Save contact &amp; site info</button>
+      </div>
+    </div>
+
+    <div class="download-banner">
+      <p>When you're done editing, download the updated file and replace <code>js/data.js</code> in your project folder, then re-upload/redeploy.</p>
+      <div style="display:flex; gap:10px;">
+        <button class="btn btn-outline btn-sm" id="reset-btn">Discard changes</button>
+        <button class="btn btn-gold" id="download-btn">Download data.js</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
